@@ -19,14 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@CrossOrigin(origins = "https://f827-154-0-10-27.in.ngrok.io/", maxAge = 4800, allowCredentials = "false")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/employees")
 public class EmployeeController {
     @Autowired
     private EmployeeRepo employeeRepo;
-
-
+    
     @GetMapping
     public List<Employee> getEmployees() {
         return employeeRepo.findAll();
