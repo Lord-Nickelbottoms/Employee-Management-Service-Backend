@@ -31,7 +31,7 @@ public class EmployeeController {
 
     @GetMapping(value = "/{id}")
     public Optional<Employee> findOne(Employee employee) {
-        return employeeRepo.findById(employee.getId());
+        return employeeRepo.findById(employee.getEmp_num());
     }
 
     @PostMapping

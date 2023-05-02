@@ -6,34 +6,34 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Employee {
-    private int id;
+    private int emp_num;
     private String firstName;
-    private String lastName;
+    private String surname;
     private String email;
     private String department;
-    private String contactNo;
+    // private String contactNo;
 
     public Employee() {
 
     }
 
-    public Employee(int id, String firstName, String lastName, String email, String department, String contactNo) {
-        this.id = id;
+    public Employee(int id, String firstName, String lastName, String email, String department /*String contactNo*/) {
+        this.emp_num = id;
         this.firstName = firstName;
-        this.lastName = lastName;
+        this.surname = lastName;
         this.email = email;
         this.department = department;
-        this.contactNo = contactNo;
+        // this.contactNo = contactNo;
     }
 
     @Id
     @GeneratedValue
-    public int getId() {
-        return id;
+    public int getEmp_num() {
+        return emp_num;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setEmp_num(int id) {
+        this.emp_num = id;
     }
 
     public String getFirstName() {
@@ -44,14 +44,18 @@ public class Employee {
         this.firstName = name;
     }
 
-    public String getLastName() {
-        return lastName;
+
+    /* Surname */
+    public String getSurname() {
+        return surname;
     }
 
-    public void setLastName(String surname) {
-        this.lastName = surname;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
+
+    /* Email */
     public String getEmail() {
         return email;
     }
@@ -60,6 +64,8 @@ public class Employee {
         this.email = email;
     }
 
+
+    /* Department */
     public String getDepartment() {
         return department;
     }
@@ -68,11 +74,13 @@ public class Employee {
         this.department = department;
     }
 
-    public String getContactNo() {
-        return contactNo;
-    }
 
-    public void setContactNo(String contactNo) {
-        this.contactNo = contactNo;
-    }
+    /* Contact Number */
+    // public String getContactNo() {
+    //     return contactNo;
+    // }
+
+    // public void setContactNo(String contactNo) {
+    //     this.contactNo = contactNo;
+    // }
 }
