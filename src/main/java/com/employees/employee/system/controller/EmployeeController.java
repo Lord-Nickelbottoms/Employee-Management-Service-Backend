@@ -19,34 +19,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/employees")
 public class EmployeeController {
     @Autowired
     private EmployeeRepo employeeRepo;
+
     
     @GetMapping
     public List<Employee> getEmployees() {
         return employeeRepo.findAll();
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "{id}")
     public Optional<Employee> findOne(Employee employee) {
-        return employeeRepo.findById(employee.getEmp_num());
+        return employeeRepo.findById(employee.getEmployee_number());
     }
 
+    // @PostMapping(value = "/employees")
     @PostMapping
     public Employee save(@Validated @NonNull @RequestBody Employee employee) {
         return employeeRepo.save(employee);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("{id}")
     public Employee update(@Validated @NonNull @RequestBody Employee employee) {
         return employeeRepo.save(employee);
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping("{id}")
     public void delete(@PathVariable int id) {
         employeeRepo.deleteById(id);
     }

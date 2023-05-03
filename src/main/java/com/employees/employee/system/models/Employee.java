@@ -1,15 +1,24 @@
 package com.employees.employee.system.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "employee")
 public class Employee {
-    private int emp_num;
-    private String firstName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int employee_number;
+
+    @Column(name="firstname")
+    private String firstname;
     private String surname;
     private String email;
+    private String address;
     private String department;
     // private String contactNo;
 
@@ -17,31 +26,30 @@ public class Employee {
 
     }
 
-    public Employee(int id, String firstName, String lastName, String email, String department /*String contactNo*/) {
-        this.emp_num = id;
-        this.firstName = firstName;
+    public Employee(int id, String firstname, String lastName, String email, String address,String department /*String contactNo*/) {
+        this.employee_number = id;
+        this.firstname = firstname;
         this.surname = lastName;
         this.email = email;
+        this.address=address;
         this.department = department;
         // this.contactNo = contactNo;
     }
 
-    @Id
-    @GeneratedValue
-    public int getEmp_num() {
-        return emp_num;
+    public int getEmployee_number() {
+        return employee_number;
     }
 
-    public void setEmp_num(int id) {
-        this.emp_num = id;
+    public void setEmployee_number(int id) {
+        this.employee_number = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String name) {
-        this.firstName = name;
+    public void setFirstname(String name) {
+        this.firstname = name;
     }
 
 
@@ -72,6 +80,14 @@ public class Employee {
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    public String getAddress(){
+        return address;
+    }
+
+    public void setAddress(String address){
+        this.address=address;
     }
 
 
