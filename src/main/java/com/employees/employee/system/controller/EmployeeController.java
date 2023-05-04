@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -43,9 +45,16 @@ public class EmployeeController {
         return employeeRepo.save(employee);
     }
 
-    @PutMapping("/{id}")
-    public Employee update(@Validated @NonNull @RequestBody Employee employee) {
-        return employeeRepo.save(employee);
+    @PutMapping("/{employee_number}")
+    public ResponseEntity<String> update(@PathVariable int employee_number, @Validated @NonNull @RequestBody Employee employee) {
+        Employee emp = employeeRepo.findById(employee_number).orElseThrow(() -> new IllegalStateException("Employee not found"));
+        emp.setFirstname(employee.getFirstname());
+        emp.setSurname(employee.getSurname());
+        emp.setEmail(employee.getEmail());
+        emp.setAddress(employee.getAddress());
+        emp.setDepartment(employee.getDepartment());
+        employeeRepo.save(emp);
+        return new ResponseEntity<String>("Employee successfully updated", HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")
