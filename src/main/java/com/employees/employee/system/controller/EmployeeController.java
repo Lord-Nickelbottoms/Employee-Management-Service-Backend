@@ -43,7 +43,7 @@ public class EmployeeController {
         return employeeRepo.save(employee);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public Employee update(@Validated @NonNull @RequestBody Employee employee) {
         return employeeRepo.save(employee);
     }
