@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(value = "/employees")
+@RequestMapping("/employees")
 public class EmployeeController {
     @Autowired
     private EmployeeRepo employeeRepo;
