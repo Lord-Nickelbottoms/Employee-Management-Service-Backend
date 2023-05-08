@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.employees.employee.system.models.Employee;
@@ -61,4 +62,11 @@ public class EmployeeController {
     public void delete(@PathVariable int id) {
         employeeRepo.deleteById(id);
     }
+
+    // @GetMapping(value="/search")
+    // public   List<Employee>searchEmployees(@RequestParam ("value") String value)
+    // {
+    //     List<Employee> employees = employeeRepo.searchEmployees(value);
+    //     return employees;
+    // }
 }
